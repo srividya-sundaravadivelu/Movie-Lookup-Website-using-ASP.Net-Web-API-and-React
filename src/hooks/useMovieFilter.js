@@ -10,7 +10,7 @@ function useMovieFilter(startingShowDetails = false, startingYear="",startingSea
 
     // Extract unique year values using a Set
     const uniqueYearSet = new Set(data.map((item) => item.year));
-    const uniqueYears = [...uniqueYearSet];   
+    const uniqueYears = [...uniqueYearSet].sort((a,b)=> b-a);   
 
     // Extract and combine all genres into a single array
     const combinedGenres = data.reduce((genres, movie) => {

@@ -22,7 +22,8 @@ function MovieList() {
   .filter((movie) => movie.year.toString().includes(movieYear))
   .filter((movie) => {
     return movie.genres.find((genre) => genre.includes(movieGenre));
-  });
+  })
+  .sort((a, b) => b.year - a.year);;
 
   // Calculate the total number of pages
   const totalPages = Math.ceil(filteredMovies.length / itemsPerPage);
