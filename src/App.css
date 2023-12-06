@@ -1115,7 +1115,7 @@ input:checked + .switch:before {
         width: 170px;
         word-wrap: break-word;
         text-align: center;
-    }
+    }    
 
     .social .company {
         padding-bottom: 15px;
@@ -1230,5 +1230,38 @@ div.pagination.right button{
 div.pagination.right button.active{
     background-color: lightgrey;
 }
+
+div.footer-text {
+    word-wrap: break-word;
+    text-align: center;
+    
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .image-container:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .modal-body {
+    max-height: 550px; 
+    overflow-y: auto; 
+  }
 
 

@@ -15,17 +15,6 @@ function MoviesToolbar() {
     uniqueGenres,
     movieGenre,
     setMovieGenre} = useContext(MovieFilterContext);
-  
-
-
-
-
-  
-  /*const onSearchButtonClick = (e) =>{
-    e.preventDefault();
-    // handleSearch(searchQuery);
-  }*/
-
    
     return (
       <section className="toolbar dark-theme-header">
