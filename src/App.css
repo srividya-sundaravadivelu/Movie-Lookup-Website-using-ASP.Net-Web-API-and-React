@@ -1115,6 +1115,7 @@ input:checked + .switch:before {
         width: 170px;
         word-wrap: break-word;
         text-align: center;
+        padding-top: 20px;
     }    
 
     .social .company {
@@ -1260,7 +1261,16 @@ div.footer-text {
   }
 
   .modal-body {
-    max-height: 550px; 
+    max-height: 450px; 
+    /* overflow-y: auto;  */
+  }
+
+  .header-title{
+    padding-top: 20px;
+  }
+
+  div.extract-div{
+    max-height: 190px; 
     overflow-y: auto; 
   }
 

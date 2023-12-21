@@ -1,13 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { MovieFilterContext } from '../contexts/MovieFilterContext';
 
-export function usePagination(totalRecords, itemsPerPage) {
+
+function useFetchMovies()
+{   
+    // const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 50;
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null); 
+    const {searchQuery,movieYear,movieGenre,currentPage, setCurrentPage} = useContext(MovieFilterContext);
+    const [totalPages, setTotalPages] = useState(0);
+
+    useEffect(() => {  
+        const fetchMovies = async () => {
+          try {
+            const response = await axios.get(`https://localhost:4000/movies/${currentPage}/${pageSize}`, {
+            params: {
+              searchQuery: searchQuery || null,
+              movieYear: movieYear || null,
+              movieGenre: movieGenre || null,
+            },
+          });     
+            setError("");
+            setMovies(response.data.movies);              
+            setTotalPages(response.data.pagination.totalPageCount);
+            setLoading(false);            
+          } 
+          
+          catch (error) {
+            setError(error.message);
+            setLoading(false);
+          }
+        };
     
-    const [currentPage, setCurrentPage] = useState(1);
+        fetchMovies(currentPage);
+      }, [searchQuery, movieYear, movieGenre, currentPage]);
 
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(totalRecords / itemsPerPage);
 
-    // Function to handle page changes
+      // Function to handle page changes
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
     };
@@ -54,10 +86,14 @@ export function usePagination(totalRecords, itemsPerPage) {
         return pagesArray;
     };
 
-    return {        
+    return {
+        movies,        
+        error,
+        loading,
         currentPage,
         totalPages,
         handlePageChange,
-        generatePaginationArray        
-    };
+        generatePaginationArray 
+    }
 }
+export default useFetchMovies;

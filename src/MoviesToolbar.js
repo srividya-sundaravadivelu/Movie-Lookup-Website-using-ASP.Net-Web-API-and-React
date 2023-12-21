@@ -1,20 +1,50 @@
 import { useContext } from "react";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { MovieFilterContext } from "./contexts/MovieFilterContext";
+import useFetchMovieGenres from "./hooks/useFetchMovieGenres";
+import useFetchMovieYears from "./hooks/useFetchMovieYears";
 
 
-function MoviesToolbar() {
+function MoviesToolbar() {   
+  
    const {theme,setTheme} = useContext(ThemeContext);
    const {showDetails,
     setShowDetails,
-    uniqueYears,
     movieYear,
     setMovieYear,
-    // searchQuery,
     setSearchQuery,
-    uniqueGenres,
     movieGenre,
-    setMovieGenre} = useContext(MovieFilterContext);
+    setMovieGenre,
+    setCurrentPage} = useContext(MovieFilterContext);
+
+    const {uniqueGenres, errorGenres} = useFetchMovieGenres();
+    const {uniqueYears, errorYears}= useFetchMovieYears();
+
+    if (errorGenres) {
+      return <div>Error Loading Movie Genres: {errorGenres}</div>;
+    } 
+
+    if (errorYears) {
+      return <div>Error Loading Movie Years: {errorYears}</div>;
+    } 
+
+    function OnMovieGenreChange(e)
+    {
+        setMovieGenre(e.target.value);
+        setCurrentPage(1);
+    }
+
+    function OnMovieYearChange(e)
+    {
+        setMovieYear(e.target.value);
+        setCurrentPage(1);
+    }
+
+    function OnSearchQueryChange(e)
+    {
+      setSearchQuery(e.target.value);
+      setCurrentPage(1);
+    }
    
     return (
       <section className="toolbar dark-theme-header">
@@ -24,7 +54,7 @@ function MoviesToolbar() {
             <li className="d-flex flex-column flex-md-row ml-sm-5 ml-0">
                 <strong>Genre</strong>
                 <label className="dropdown">
-                  <select className="form-control genre" value={movieGenre} onChange={(e)=>setMovieGenre(e.target.value)}>
+                  <select className="form-control genre" value={movieGenre} onChange={(e)=>OnMovieGenreChange(e)}>
                   <option value="">All</option>
                   {uniqueGenres.map((genre) => (
                     <option key={genre} value={genre}>
@@ -36,7 +66,7 @@ function MoviesToolbar() {
               <li className="d-flex flex-column flex-md-row ml-sm-5 ml-0">
                 <strong>Year</strong>
                 <label className="dropdown">
-                  <select className="form-control year" value={movieYear} onChange={(e)=>setMovieYear(e.target.value)}>
+                  <select className="form-control year" value={movieYear} onChange={(e)=>OnMovieYearChange(e)}>
                   <option value="">All</option>
                   {uniqueYears.map((year) => (
                     <option key={year} value={year}>
@@ -55,7 +85,7 @@ function MoviesToolbar() {
               <li className="d-flex flex-column flex-md-row ml-sm-5 ml-0">
                 {/* <form onSubmit={onSearchButtonClick}>   */}
                   <div className="input-group">                                  
-                      <input type="text" className="form-control" placeholder="Search by title/cast" onChange={(e)=>setSearchQuery(e.target.value)}>                    
+                      <input type="text" className="form-control" placeholder="Search by title/cast" onChange={(e)=>OnSearchQueryChange(e)}>                    
                       </input>
                       <div className="input-group-append">
                         <button className="btn btn-secondary" type="button">

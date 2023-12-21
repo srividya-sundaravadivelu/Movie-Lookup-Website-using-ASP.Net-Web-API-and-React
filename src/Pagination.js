@@ -1,7 +1,6 @@
-
 import React from "react";
    
-export function Pagination({handlePageChange,currentPage,generatePaginationArray,totalPages}){
+ export default function Pagination({handlePageChange,currentPage,generatePaginationArray,totalPages}){
     return (
         <div className="pagination right">
             <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>

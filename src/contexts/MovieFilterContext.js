@@ -13,7 +13,9 @@ function MovieFilterProvider({children,startingShowDetails = false}){
         setSearchQuery,
         uniqueGenres,
         movieGenre,
-        setMovieGenre} = useMovieFilter(startingShowDetails);  
+        setMovieGenre,
+        currentPage,
+        setCurrentPage} = useMovieFilter(startingShowDetails);  
     
     return (
         <MovieFilterContext.Provider value={{ showDetails,
@@ -25,7 +27,9 @@ function MovieFilterProvider({children,startingShowDetails = false}){
             setSearchQuery,
             uniqueGenres,
             movieGenre,
-            setMovieGenre }}>
+            setMovieGenre,
+            currentPage,
+            setCurrentPage}}>
           {children}
         </MovieFilterContext.Provider>
       );

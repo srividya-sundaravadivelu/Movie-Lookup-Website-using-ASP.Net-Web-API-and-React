@@ -1,5 +1,6 @@
 import { ThemeContext } from "./contexts/ThemeContext";
 import { useContext } from "react";
+
 function Header() {
 
     const {theme} = useContext(ThemeContext);
@@ -8,10 +9,10 @@ function Header() {
         <div className="container mobile-container">
           <div className="d-flex justify-content-between">
             <div>
-              {/* <img alt="SVCC Home Page" src="/images/SVCCLogo.png" /> */}
+              { <img alt="Movie Logo" src={require('./images/movie_logo.png')} width='100px' /> }
             </div>
             <div className={theme === 'light'?'':'text-info'}>
-              <h4 className="header-title">Movie Database</h4>
+              <h4 className="header-title">CineSphere: Your Ultimate Movie Oasis</h4>
             </div>
             <div className={theme === 'light'? '':'text-info'}>
               {/* Hello Srividya &nbsp;&nbsp; */}
