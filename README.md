@@ -1,5 +1,5 @@
-# Live Demo
-[Watch the live Demo here](http://movie-lookup-react-bucket.s3-website-us-east-1.amazonaws.com/)
+
+[Click link to go to Movie Lookup Website:](http://movie-lookup-react-bucket.s3-website-us-east-1.amazonaws.com/)
 
 
 
