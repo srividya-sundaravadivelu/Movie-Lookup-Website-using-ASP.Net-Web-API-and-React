@@ -1,5 +1,7 @@
 [Read my article on medium digest:](https://medium.com/@srivi18.2002/building-a-movie-lookup-application-using-asp-net-core-web-api-and-react-528cfb0c7dec)
 
+[Read my article on how to deploy this application on AWS:](https://medium.com/@srivi18.2002/deploying-an-asp-net-core-web-api-and-react-application-on-aws-6427b344f11b)
+
 [Click link to go to Movie Lookup Website:](http://cinesphere-movie-lookup.s3-website-us-east-1.amazonaws.com/)
 
 
