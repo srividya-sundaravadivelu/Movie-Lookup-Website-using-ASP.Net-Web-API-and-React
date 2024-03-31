@@ -2,6 +2,8 @@
 
 [Read my article on how to deploy this application on AWS:](https://medium.com/@srivi18.2002/deploying-an-asp-net-core-web-api-and-react-application-on-aws-6427b344f11b)
 
+[Read my article on how to containerize this application using Docker:](https://medium.com/@srivi18.2002/containerizing-an-asp-net-core-web-api-and-react-application-using-docker-cdd0d2ad32ff)
+
 "Movie Lookup Website using ASP.NET Web API and React" is a comprehensive application designed to provide users with a seamless and intuitive experience for exploring movies. Users can search for movies based on various criteria such as genre, year, title, or cast. 
 
 Key Features:
